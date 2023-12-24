@@ -1,0 +1,9 @@
+[submodule "lib/crashpad"]
+	path = lib/crashpad
+	url = https://github.com/getsentry/crashpad
+[submodule "lib/googletest"]
+	path = lib/googletest
+	url = https://github.com/google/googletest
+[submodule "lib/magic_enum"]
+	path = lib/magic_enum
+	url = https://github.com/Neargye/magic_enum

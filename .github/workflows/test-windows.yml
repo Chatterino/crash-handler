@@ -1,0 +1,42 @@
+name: Test Windows
+
+on:
+  push:
+    branches:
+      - main
+      - "release/*"
+  pull_request:
+  workflow_dispatch:
+  merge_group:
+
+concurrency:
+  group: test-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-windows:
+    name: "Test ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Enable Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1.12.1
+
+      - name: Build
+        run: |
+          cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Debug -DCRASH_HANDLER_BUILD_TESTS=On
+          ninja -C build
+
+      - name: Test
+        timeout-minutes: 10
+        run: |
+          ctest --repeat until-pass:4 --output-on-failure
+        working-directory: build
