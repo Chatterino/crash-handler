@@ -2,9 +2,11 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    labels: [ci]
     schedule:
       interval: "daily"
   - package-ecosystem: "gitsubmodule"
     directory: "/"
+    labels: [ci]
     schedule:
       interval: "daily"
