@@ -49,6 +49,7 @@ set_target_properties(${PROJECT_NAME}
         OUTPUT_NAME "crashpad-handler"
         CXX_STANDARD 20
 )
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION chrashpad)
 
 if(WIN32)
     target_compile_definitions(${PROJECT_LIB} PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN)
