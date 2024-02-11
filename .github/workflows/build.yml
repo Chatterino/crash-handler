@@ -30,7 +30,7 @@ jobs:
 
       - name: Enable Developer Command Prompt (Windows)
         if: startsWith(matrix.os, 'windows')
-        uses: ilammy/msvc-dev-cmd@v1.12.1
+        uses: ilammy/msvc-dev-cmd@v1.13.0
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
@@ -83,7 +83,7 @@ jobs:
         run: echo "VALUE=$(git describe --exact-match --match 'v*')" >> "$GITHUB_OUTPUT"
 
       - name: Create release
-        uses: ncipollo/release-action@v1.13.0
+        uses: ncipollo/release-action@v1.14.0
         with:
           replacesArtifacts: true
           allowUpdates: true
