@@ -25,7 +25,7 @@ jobs:
         run: sudo apt-get -y install dos2unix
 
       - name: Check formatting
-        uses: DoozyX/clang-format-lint-action@v0.17
+        uses: DoozyX/clang-format-lint-action@v0.18
         with:
           source: "./src ./tests"
           extensions: "hpp,cpp"
