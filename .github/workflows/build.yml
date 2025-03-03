@@ -40,6 +40,7 @@ jobs:
           version: 19
       
       - name: Set compiler to clang-cl
+        if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
         run: |
           echo "CC=clang-cl" >> "$Env:GITHUB_ENV"
           echo "CXX=clang-cl" >> "$Env:GITHUB_ENV"
