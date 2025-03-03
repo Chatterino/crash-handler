@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
+        compiler: [cl, clang-cl]
 
       fail-fast: false
 
@@ -32,6 +33,13 @@ jobs:
         if: startsWith(matrix.os, 'windows')
         uses: ilammy/msvc-dev-cmd@v1.13.0
 
+      - name: Install LLVM and Clang
+        if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: 19
+          env: true
+
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
         shell: pwsh
@@ -40,7 +48,7 @@ jobs:
           ninja -C build
 
       - name: Upload artifact (Windows)
-        if: startsWith(matrix.os, 'windows')
+        if: startsWith(matrix.os, 'windows') && matrix.compiler == 'cl'
         uses: actions/upload-artifact@v4
         with:
           name: crashpad-handler.exe
