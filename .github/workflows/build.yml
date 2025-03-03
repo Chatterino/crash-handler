@@ -38,7 +38,11 @@ jobs:
         uses: KyleMayes/install-llvm-action@v2.0.6
         with:
           version: 19
-          env: true
+      
+      - name: Set compiler to clang-cl
+        run: |
+          echo "CC=clang-cl" >> "$Env:GITHUB_ENV"
+          echo "CXX=clang-cl" >> "$Env:GITHUB_ENV"
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
