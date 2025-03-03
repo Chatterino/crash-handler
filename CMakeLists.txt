@@ -36,6 +36,7 @@ target_link_libraries(${PROJECT_LIB}
     PUBLIC
         crashpad_handler_lib
         crashpad_tools
+        crashpad_interface # inherit warning levels ("as if" we were a crashpad lib)
         magic_enum::magic_enum
 )
 target_include_directories(${PROJECT_LIB} PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src")
