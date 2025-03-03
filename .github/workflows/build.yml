@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build:
-    name: "Build on ${{ matrix.os }}"
+    name: "Build on ${{ matrix.os }} with ${{matrix.compiler}}"
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -37,7 +37,7 @@ jobs:
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
         uses: KyleMayes/install-llvm-action@v2
         with:
-          version: 19
+          version: '19.1'
           env: true
 
       - name: Build (Windows)
