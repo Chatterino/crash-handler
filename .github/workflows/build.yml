@@ -86,7 +86,7 @@ jobs:
         with:
           fetch-depth: 0 # we need the tags
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: crashpad-handler.exe
           path: build/
