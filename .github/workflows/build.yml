@@ -54,7 +54,7 @@ jobs:
 
       - name: Upload artifact (Windows)
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'cl'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: crashpad-handler.exe
           path: build/bin/crashpad/crashpad-handler.exe
