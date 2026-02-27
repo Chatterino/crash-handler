@@ -35,7 +35,7 @@ jobs:
 
       - name: Install LLVM and Clang
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
-        uses: KyleMayes/install-llvm-action@v2.0.8
+        uses: KyleMayes/install-llvm-action@v2.0.9
         with:
           version: 19
 
@@ -54,7 +54,7 @@ jobs:
 
       - name: Upload artifact (Windows)
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'cl'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: crashpad-handler.exe
           path: build/bin/crashpad/crashpad-handler.exe
@@ -86,7 +86,7 @@ jobs:
         with:
           fetch-depth: 0 # we need the tags
 
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           name: crashpad-handler.exe
           path: build/
