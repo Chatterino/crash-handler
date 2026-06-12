@@ -37,7 +37,7 @@ jobs:
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
         uses: KyleMayes/install-llvm-action@v2.0.9
         with:
-          version: 19
+          version: 20
 
       - name: Set compiler to clang-cl
         if: startsWith(matrix.os, 'windows') && matrix.compiler == 'clang-cl'
